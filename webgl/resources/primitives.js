@@ -1,5 +1,5 @@
 /*
- * Copyright 2014, Gregg Tavares.
+ * Copyright 2021 GFXFundamentals.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -12,7 +12,7 @@
  * copyright notice, this list of conditions and the following disclaimer
  * in the documentation and/or other materials provided with the
  * distribution.
- *     * Neither the name of Gregg Tavares. nor the names of his
+ *     * Neither the name of GFXFundamentals. nor the names of his
  * contributors may be used to endorse or promote products derived from
  * this software without specific prior written permission.
  *
@@ -464,8 +464,8 @@
         // Generate a vertex based on its spherical coordinates
         const u = x / subdivisionsAxis;
         const v = y / subdivisionsHeight;
-        const theta = longRange * u;
-        const phi = latRange * v;
+        const theta = longRange * u + opt_startLongitudeInRadians;
+        const phi = latRange * v + opt_startLatitudeInRadians;
         const sinTheta = Math.sin(theta);
         const cosTheta = Math.cos(theta);
         const sinPhi = Math.sin(phi);
@@ -1099,32 +1099,54 @@
     return arrays;
   }
 
+  function createFlattenedFunc(vertFunc) {
+    return function(gl, ...args) {
+      let vertices = vertFunc(...args);
+      vertices = deindexVertices(vertices);
+      vertices = makeRandomVertexColors(vertices, {
+          vertsPerColor: 6,
+          rand: function(ndx, channel) {
+            return channel < 3 ? ((128 + Math.random() * 128) | 0) : 255;
+          },
+        });
+      return webglUtils.createBufferInfoFromArrays(gl, vertices);
+    };
+  }
+
+
+
   return {
     create3DFBufferInfo: createBufferInfoFunc(create3DFVertices),
     create3DFBuffer: createBufferFunc(create3DFVertices),
-    create3DFVertices: create3DFVertices,
+    create3DFVertices,
+    create3DFWithVertexColorsBufferInfo: createFlattenedFunc(create3DFVertices),
     createCubeBufferInfo: createBufferInfoFunc(createCubeVertices),
     createCubeBuffers: createBufferFunc(createCubeVertices),
-    createCubeVertices: createCubeVertices,
+    createCubeVertices,
+    createCubeWithVertexColorsBufferInfo: createFlattenedFunc(createCubeVertices),
     createPlaneBufferInfo: createBufferInfoFunc(createPlaneVertices),
     createPlaneBuffers: createBufferFunc(createPlaneVertices),
-    createPlaneVertices: createPlaneVertices,
+    createPlaneVertices,
+    createPlaneWithVertexColorsBufferInfo: createFlattenedFunc(createPlaneVertices),
     createXYQuadBufferInfo: createBufferInfoFunc(createXYQuadVertices),
     createXYQuadBuffers: createBufferFunc(createXYQuadVertices),
-    createXYQuadVertices: createXYQuadVertices,
+    createXYQuadVertices,
+    createXYQuadWithVertexColorsBufferInfo: createFlattenedFunc(createXYQuadVertices),
     createSphereBufferInfo: createBufferInfoFunc(createSphereVertices),
     createSphereBuffers: createBufferFunc(createSphereVertices),
-    createSphereVertices: createSphereVertices,
+    createSphereVertices,
+    createSphereWithVertexColorsBufferInfo: createFlattenedFunc(createSphereVertices),
     createTruncatedConeBufferInfo: createBufferInfoFunc(createTruncatedConeVertices),
     createTruncatedConeBuffers: createBufferFunc(createTruncatedConeVertices),
-    createTruncatedConeVertices: createTruncatedConeVertices,
-    deindexVertices: deindexVertices,
-    flattenNormals: flattenNormals,
-    makeRandomVertexColors: makeRandomVertexColors,
-    reorientDirections: reorientDirections,
-    reorientNormals: reorientNormals,
-    reorientPositions: reorientPositions,
-    reorientVertices: reorientVertices,
+    createTruncatedConeVertices,
+    createTruncatedConeWithVertexColorsBufferInfo: createFlattenedFunc(createTruncatedConeVertices),
+    deindexVertices,
+    flattenNormals,
+    makeRandomVertexColors,
+    reorientDirections,
+    reorientNormals,
+    reorientPositions,
+    reorientVertices,
   };
 
 }));

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- this file is auto-generated from webgl/lessons/ja/webgl-boilerplate.md. Do not edited directly -->
 <!--
-Copyright 2012, Gregg Tavares.
+Copyright 2021 GFXFundamentals.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -16,7 +16,7 @@ met:
     in the documentation and/or other materials provided with the
     distribution.
 
-*   Neither the name of Gregg Tavares. nor the names of his
+*   Neither the name of GFXFundamentals. nor the names of his
     contributors may be used to endorse or promote products derived from
     this software without specific prior written permission.
 
@@ -37,24 +37,24 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="全てのWebGLで共通して必要となるコード" />
-<meta name="keywords" content="webgl graphics" />
-<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-boilerplate_ja.jpg" />
+<meta name="description" content="全てのWebGLで共通して必要となるコード">
+<meta name="keywords" content="webgl graphics">
+<meta name="thumbnail" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-boilerplate_ja.jpg">
 
-<meta property="og:title" content="WebGLのひな型コード" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-boilerplate_ja.jpg" />
-<meta property="og:description" content="全てのWebGLで共通して必要となるコード" />
-<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/ja/webgl-boilerplate.html" />
+<meta property="og:title" content="WebGLのひな型コード">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-boilerplate_ja.jpg">
+<meta property="og:description" content="全てのWebGLで共通して必要となるコード">
+<meta property="og:url" content="https://webglfundamentals.org/webgl/lessons/ja/webgl-boilerplate.html">
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@greggman" />
-<meta name="twitter:creator" content="@greggman" />
-<meta name="twitter:domain" content="webglfundamentals.org" />
-<meta name="twitter:title" content="WebGLのひな型コード" />
-<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/ja/webgl-boilerplate.html" />
-<meta name="twitter:description" content="全てのWebGLで共通して必要となるコード" />
-<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-boilerplate_ja.jpg" />
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@greggman">
+<meta name="twitter:creator" content="@greggman">
+<meta name="twitter:domain" content="webglfundamentals.org">
+<meta name="twitter:title" content="WebGLのひな型コード">
+<meta name="twitter:url" content="https://webglfundamentals.org/webgl/lessons/ja/webgl-boilerplate.html">
+<meta name="twitter:description" content="全てのWebGLで共通して必要となるコード">
+<meta name="twitter:image:src" content="https://webglfundamentals.org/webgl/lessons/screenshots/webgl-boilerplate_ja.jpg">
 
 <script type="application/ld+json">
 {
@@ -94,7 +94,18 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 <title>WebGLのひな型コード</title>
 <link href="/webgl/lessons/resources/webglfundamentals-icon.png" rel="shortcut icon" type="image/png">
-<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css" type="text/css" />
+<link rel="stylesheet" href="/webgl/lessons/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css">
+
+  <link rel="alternate" hreflang="en" href="https://webglfundamentals.org/webgl/lessons/webgl-boilerplate.html">
+  <link rel="alternate" hreflang="fr" href="https://webglfundamentals.org/webgl/lessons/fr/webgl-boilerplate.html">
+  <link rel="alternate" hreflang="ja" href="https://webglfundamentals.org/webgl/lessons/ja/webgl-boilerplate.html">
+  <link rel="alternate" hreflang="ko" href="https://webglfundamentals.org/webgl/lessons/ko/webgl-boilerplate.html">
+  <link rel="alternate" hreflang="pl" href="https://webglfundamentals.org/webgl/lessons/pl/webgl-boilerplate.html">
+  <link rel="alternate" hreflang="pt-br" href="https://webglfundamentals.org/webgl/lessons/pt-br/webgl-boilerplate.html">
+  <link rel="alternate" hreflang="ru" href="https://webglfundamentals.org/webgl/lessons/ru/webgl-boilerplate.html">
+  <link rel="alternate" hreflang="zh_cn" href="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-boilerplate.html">
+
 
 
 
@@ -120,32 +131,41 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <div class="webgl_header">
   <h1><a href="/webgl/lessons/ja/">WebGLFundamentals.org</a></h1>
 <style>
-#forkongithub a {
+#forkongithub>div {
     background: #000;
     color: #fff;
-    text-decoration: none;
     font-family: arial,sans-serif;
     text-align: center;
     font-weight: bold;
     padding: 5px 40px;
     font-size: 0.9rem;
-    line-height: 2rem;
+    line-height: 1.3rem;
     position: relative;
     transition: 0.5s;
     display: block;
-    width: 300px;
+    width: 400px;
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateX(150px) rotate(45deg) translate(10px,70px);
+    transform: translateX(200px) rotate(45deg) translate(10px,70px);
     box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
     pointer-events: auto;
 }
-#forkongithub a:hover {
+#forkongithub a {
+  text-decoration: none;
+  color: #fff;
+}
+#forkongithub>div:hover {
     background: #c11;
     color: #fff;
 }
-#forkongithub a::before,#forkongithub a::after {
+#forkongithub .contributors {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.2);
+  line-height: 1.2;
+  padding: 0.1em;
+}
+#forkongithub>div::before,#forkongithub>div::after {
     content: "";
     width: 100%;
     display: block;
@@ -155,7 +175,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     height: 1px;
     background: #fff;
 }
-#forkongithub a::after {
+#forkongithub>div::after {
     bottom: 1px;
     top: auto;
 }
@@ -176,8 +196,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   height: 1em;
   vertical-align: middle;
 }
+#forkongithub img {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
 @media (max-width: 900px) {
-    #forkongithub a{
+    #forkongithub>div {
         line-height: 1.2rem;
     }
 }
@@ -187,21 +214,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   }
 }
 @media (max-width: 410px) {
-    #forkongithub a{
+    #forkongithub>div {
         font-size: 0.7rem;
         transform: translateX(150px) rotate(45deg) translate(20px,40px);
     }
 }
 
 </style>
-<div id="forkongithub"><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div id="forkongithub"><div><div><a href="https://github.com/gfxfundamentals/webgl-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg width="100%" height="100%" viewBox="0 0 136 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
     <g transform="matrix(3.92891,0,0,3.92891,67.867,129.125)">
         <path d="M0,-31.904C-8.995,-31.904 -16.288,-24.611 -16.288,-15.614C-16.288,-8.417 -11.621,-2.312 -5.148,-0.157C-4.333,-0.008 -4.036,-0.511 -4.036,-0.943C-4.036,-1.329 -4.05,-2.354 -4.058,-3.713C-8.589,-2.729 -9.545,-5.897 -9.545,-5.897C-10.286,-7.779 -11.354,-8.28 -11.354,-8.28C-12.833,-9.29 -11.242,-9.27 -11.242,-9.27C-9.607,-9.155 -8.747,-7.591 -8.747,-7.591C-7.294,-5.102 -4.934,-5.821 -4.006,-6.238C-3.858,-7.29 -3.438,-8.008 -2.972,-8.415C-6.589,-8.826 -10.392,-10.224 -10.392,-16.466C-10.392,-18.244 -9.757,-19.698 -8.715,-20.837C-8.883,-21.249 -9.442,-22.905 -8.556,-25.148C-8.556,-25.148 -7.188,-25.586 -4.076,-23.478C-2.777,-23.84 -1.383,-24.02 0.002,-24.026C1.385,-24.02 2.779,-23.84 4.08,-23.478C7.19,-25.586 8.555,-25.148 8.555,-25.148C9.444,-22.905 8.885,-21.249 8.717,-20.837C9.761,-19.698 10.392,-18.244 10.392,-16.466C10.392,-10.208 6.583,-8.831 2.954,-8.428C3.539,-7.925 4.06,-6.931 4.06,-5.411C4.06,-3.234 4.04,-1.477 4.04,-0.943C4.04,-0.507 4.333,0 5.16,-0.159C11.628,-2.318 16.291,-8.419 16.291,-15.614C16.291,-24.611 8.997,-31.904 0,-31.904" style="fill:white;"/>
     </g>
 </svg>
-</a></div>
+</a></div></div></div>
 
 </div>
 
@@ -225,7 +252,7 @@ GPUの特性を活かすため、これらの関数はGPU専用の言語で記�
 <p>これらの関数をコンパイル、リンクするという手順は必ず行います。
 また、そのためのコードはほとんどのWebGLアプリケーションで共通です。</p>
 <p>これは、「シェーダーをコンパイルする」ためのコードのひな型(Boilerplate code)です。</p>
-<pre class="prettyprint"><code>/**
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">/**
  * シェーダーを生成、コンパイルする。
  *
  * @param {!WebGLRenderingContext} gl WebGLコンテキスト。
@@ -254,7 +281,7 @@ function compileShader(gl, shaderSource, shaderType) {
   return shader;
 }
 </code></pre><p>そしてこれは「2つのシェーダーをプログラムにリンクする」コードのひな型です。</p>
-<pre class="prettyprint"><code>/**
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">/**
  * 2つのシェーダーからプログラムを生成する。
  *
  * @param {!WebGLRenderingContext) gl WebGLコンテキスト。
@@ -277,7 +304,7 @@ function createProgram(gl, vertexShader, fragmentShader) {
   var success = gl.getProgramParameter(program, gl.LINK_STATUS);
   if (!success) {
       // リンク中に問題があった場合、エラーを取得する。
-      throw (&quot;program filed to link:&quot; + gl.getProgramInfoLog (program));
+      throw (&quot;program failed to link:&quot; + gl.getProgramInfoLog (program));
   }
 
   return program;
@@ -288,7 +315,7 @@ function createProgram(gl, vertexShader, fragmentShader) {
 しかし、ここに挙げた短いコードは、「ほとんど全てのWebGLプログラムで共通」です。</p>
 <p>私は、シェーダーのコードを&lt;script&gt;タグを使って書く方法を好んで使っています。
 この方法を使う場合、以下のようなコードで処理することになります。</p>
-<pre class="prettyprint"><code>/**
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">/**
  * script要素に書かれた内容からシェーダーを生成する。
  *
  * @param {!WebGLRenderingContext} gl WebGLコンテキスト。
@@ -322,10 +349,10 @@ function createShaderFromScript(gl, scriptId, opt_shaderType) {
   return compileShader(gl, shaderSource, opt_shaderType);
 };
 </code></pre><p>以下のコードでシェーダーをコンパイルできます。</p>
-<pre class="prettyprint"><code>var shader = createShaderFromScript(gl, &quot;someScriptTagId&quot;);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var shader = createShaderFromScript(gl, &quot;someScriptTagId&quot;);
 </code></pre><p>私がよく使うのは、さらに一歩踏み込んで「二つのシェーダーをそれぞれの書かれた
 script要素から読み込んでコンパイルし、プログラムにアタッチ、リンクまで行う関数」です。</p>
-<pre class="prettyprint"><code>/**
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">/**
  * 二つのscript要素を使ってWebGLProgramを生成する。
  *
  * @param {!WebGLRenderingContext} gl WebGLコンテキスト。
@@ -345,11 +372,11 @@ function createProgramFromScripts(
 このコードの実装内容については<a href="webgl-resizing-the-canvas.html">このドキュメント</a>
 で紹介しています。</p>
 <h2 id="-">ひな形コードの利用</h2>
-<p>以上、２つのひな形コードは<code>webgl-utils.js</code>として一つにまとめてあります。
+<p>以上、２つのひな形コードは<code class="notranslate" translate="no">webgl-utils.js</code>として一つにまとめてあります。
 これを利用するには、</p>
-<pre class="prettyprint"><code>&lt;script src=&quot;resources/webgl-utils.js&quot;&gt;&lt;/script&gt;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;script src=&quot;resources/webgl-utils.js&quot;&gt;&lt;/script&gt;
 </code></pre><p>といったコードで取り込んだ上で、以下のようなコードで呼び出します。</p>
-<pre class="prettyprint"><code>var program = webglUtils.createProgramFromScripts(
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var program = webglUtils.createProgramFromScripts(
   gl, [idOfVertexShaderScript, idOfFragmentShaderScript]);
 
 ...
@@ -360,33 +387,33 @@ webglUtils.resizeCanvasToMatchDisplaySize(canvas);
 「そのサンプルが何のために書かれたサンプルなのか判りにくく
 なってしまう」のは本末転倒で、避けるべきであるとと思います。</p>
 <p>以上で、私の「最小のWebGLひな型コード(boilerplate code)」のおおまかな紹介を終わります。
-<a href="../../resources/webgl-utils.js"><code>webgl-utils.js</code>のコードはここにあります</a>。</p>
-<p>さらにしっかり構成されたライブラリに興味があるようでしたら<a href="http://twgljs.org">TWGL.js</a>
+<a href="../../resources/webgl-utils.js"><code class="notranslate" translate="no">webgl-utils.js</code>のコードはここにあります</a>。</p>
+<p>さらにしっかり構成されたライブラリに興味があるようでしたら<a href="https://twgljs.org">TWGL.js</a>
 をチェックしてください。</p>
 <p>WebGLを複雑に見せているもう一つの要素は「シェーダーにデータを渡す手順」です。
 そのあたりの話題については「<a href="webgl-how-it-works.html">WebGLの仕組み</a>」
 で紹介しています。
 これについては、「<a href="webgl-less-code-more-fun.html">少ないコード、大きな喜び</a>」や、
-<a href="http://twgljs.org">TWGL</a>も参考になるはずです。</p>
+<a href="https://twgljs.org">TWGL</a>も参考になるはずです。</p>
 <p>以上のほかにも、同様の理由で作られたスクリプトがあるので紹介しておきます。</p>
 <ul>
-<li><p><a href="../../resources/webgl-lessons-ui.js"><code>webgl-lessons-ui.js</code></a></p>
+<li><p><a href="../../resources/webgl-lessons-ui.js"><code class="notranslate" translate="no">webgl-lessons-ui.js</code></a></p>
 <p>このスクリプトは、スライダを使って数値をセットしたり視覚化したりするためのものです。
 講義の中でよく使う機能なのでこのファイルにまとめました。</p>
 </li>
-<li><p><a href="../../resources/lessons-helper.js"><code>lessons-helper.js</code></a></p>
+<li><p><a href="../../resources/lessons-helper.js"><code class="notranslate" translate="no">lessons-helper.js</code></a></p>
 <p>このスクリプトは、webglfundmentals.org以外では必要ないでしょう。
 ほかのものに埋め込まれたlive editor上で使うと、エラーメッセージを
 画面に表示することができます。</p>
 </li>
-<li><p><a href="../../resources/m3.js"><code>m3.js</code></a></p>
+<li><p><a href="../../resources/m3.js"><code class="notranslate" translate="no">m3.js</code></a></p>
 <p>このスクリプトには、二次元を扱う計算関連の関数が多数定義されています。
 これらの関数は、このサイトの行列計算の最初の講義で作り始め、いくつかの章の中で
 追加していったものです。
 より応用的な話題を扱う章では、同じものを一から書くのは話が複雑になるだけなので
 このスクリプトにまとめて使っています。</p>
 </li>
-<li><p><a href="../../resources/m4.js"><code>m4.js</code></a></p>
+<li><p><a href="../../resources/m4.js"><code class="notranslate" translate="no">m4.js</code></a></p>
 <p>このスクリプトには、三次元を扱う計算関連の関数が多数定義されています。
 これらの関数は、このサイトの３Ｄ関連の講義の中で作ったものです。
 ３Ｄ関連の２番目の記事からは、このスクリプトを利用しています。</p>
@@ -413,6 +440,7 @@ webglUtils.resizeCanvasToMatchDisplaySize(canvas);
           <li><a href="/webgl/lessons/ja/webgl-fundamentals.html">基本</a></li>
 <li><a href="/webgl/lessons/ja/webgl-how-it-works.html">WebGLの仕組み</a></li>
 <li><a href="/webgl/lessons/ja/webgl-shaders-and-glsl.html">WebGLのシェーダーとGLSL</a></li>
+<li><a href="/webgl/lessons/resources/webgl-state-diagram.html">WebGL State Diagram</a></li>
         </ul>
   <li>画像処理</li>
         <ul>
@@ -447,10 +475,12 @@ webglUtils.resizeCanvasToMatchDisplaySize(canvas);
   <li>Geometry</li>
         <ul>
           <li><a href="/webgl/lessons/ja/webgl-3d-geometry-lathe.html">Geometry - Lathe</a></li>
+<li><a href="/webgl/lessons/ja/webgl-load-obj.html">Loading .obj files</a></li>
+<li><a href="/webgl/lessons/ja/webgl-load-obj-w-mtl.html">Loading .obj w .mtl files</a></li>
         </ul>
   <li>テクスチャ</li>
         <ul>
-          <li><a href="/webgl/lessons/ja/webgl-3d-textures.html">Textures</a></li>
+          <li><a href="/webgl/lessons/ja/webgl-3d-textures.html">テクスチャ</a></li>
 <li><a href="/webgl/lessons/ja/webgl-data-textures.html">データテクスチャ</a></li>
 <li><a href="/webgl/lessons/ja/webgl-2-textures.html">複数のテクスチャを使う</a></li>
 <li><a href="/webgl/lessons/ja/webgl-cors-permission.html">Cross Origin Images</a></li>
@@ -471,6 +501,7 @@ webglUtils.resizeCanvasToMatchDisplaySize(canvas);
         <ul>
           <li><a href="/webgl/lessons/ja/webgl-2d-drawimage.html">2D - DrawImage</a></li>
 <li><a href="/webgl/lessons/ja/webgl-2d-matrix-stack.html">2D - Matrix Stack</a></li>
+<li><a href="/webgl/lessons/ja/webgl-sprites.html">Sprites</a></li>
         </ul>
   <li>3D</li>
         <ul>
@@ -479,6 +510,7 @@ webglUtils.resizeCanvasToMatchDisplaySize(canvas);
 <li><a href="/webgl/lessons/ja/webgl-skybox.html">Skyboxes</a></li>
 <li><a href="/webgl/lessons/ja/webgl-skinning.html">Skinning</a></li>
 <li><a href="/webgl/lessons/ja/webgl-fog.html">Fog</a></li>
+<li><a href="/webgl/lessons/ja/webgl-picking.html">Picking (clicking on stuff)</a></li>
         </ul>
   <li>Text</li>
         <ul>
@@ -487,52 +519,68 @@ webglUtils.resizeCanvasToMatchDisplaySize(canvas);
 <li><a href="/webgl/lessons/ja/webgl-text-texture.html">Text - Using a Texture</a></li>
 <li><a href="/webgl/lessons/ja/webgl-text-glyphs.html">Text - Using a Glyph Texture</a></li>
         </ul>
+  <li>テクスチャ</li>
+        <ul>
+          <li><a href="/webgl/lessons/ja/webgl-ramp-textures.html">Ramp Textures (Toon Shading)</a></li>
+        </ul>
+  <li>GPGPU</li>
+        <ul>
+          <li><a href="/webgl/lessons/ja/webgl-gpgpu.html">GPGPU</a></li>
+        </ul>
         </ul>
   <li>Tips</li>
         <ul>
           <li><a href="/webgl/lessons/ja/webgl-smallest-programs.html">Smallest Programs</a></li>
 <li><a href="/webgl/lessons/ja/webgl-drawing-without-data.html">Drawing Without Data</a></li>
+<li><a href="/webgl/lessons/ja/webgl-shadertoy.html">Shadertoy</a></li>
 <li><a href="/webgl/lessons/ja/webgl-pulling-vertices.html">Pulling Vertices</a></li>
+        </ul>
+  <li>Optimization</li>
+        <ul>
+          <li><a href="/webgl/lessons/ja/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
+<li><a href="/webgl/lessons/ja/webgl-instanced-drawing.html">Instanced Drawing</a></li>
         </ul>
   <li>その他のトピック</li>
         <ul>
           <li><a href="/webgl/lessons/ja/webgl-setup-and-installation.html">WebGLの開発環境</a></li>
 <li><a href="/webgl/lessons/ja/webgl-boilerplate.html">WebGLのひな型コード</a></li>
-<li><a href="/webgl/lessons/ja/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
 <li><a href="/webgl/lessons/ja/webgl-resizing-the-canvas.html">WebGLとcanvasのリサイズ</a></li>
 <li><a href="/webgl/lessons/ja/webgl-animation.html">アニメーション</a></li>
-<li><a href="/webgl/lessons/ja/webgl-points-lines-triangles.html">Points, Lines, and Triangles</a></li>
-<li><a href="/webgl/lessons/ja/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
-<li><a href="/webgl/lessons/ja/webgl-instanced-drawing.html">Instanced Drawing</a></li>
+<li><a href="/webgl/lessons/ja/webgl-points-lines-triangles.html">点、線、三角形</a></li>
 <li><a href="/webgl/lessons/ja/webgl-multiple-views.html">Multiple Views, Multiple Canvases</a></li>
 <li><a href="/webgl/lessons/ja/webgl-visualizing-the-camera.html">Visualizing the Camera</a></li>
 <li><a href="/webgl/lessons/ja/webgl-and-alpha.html">WebGL and Alpha</a></li>
 <li><a href="/webgl/lessons/ja/webgl-2d-vs-3d-library.html">2D vs 3D libraries</a></li>
 <li><a href="/webgl/lessons/ja/webgl-anti-patterns.html">Anti-Patterns</a></li>
 <li><a href="/webgl/lessons/ja/webgl-matrix-vs-math.html">WebGL Matrices vs Math Matrices</a></li>
+<li><a href="/webgl/lessons/ja/webgl-precision-issues.html">Precision Issues</a></li>
 <li><a href="/webgl/lessons/ja/webgl-tips.html#screenshot">Taking a screenshot</a></li>
 <li><a href="/webgl/lessons/ja/webgl-tips.html#preservedrawingbuffer">Prevent the Canvas Being Cleared</a></li>
 <li><a href="/webgl/lessons/ja/webgl-tips.html#tabindex">Get Keyboard Input From a Canvas</a></li>
 <li><a href="/webgl/lessons/ja/webgl-tips.html#html-background">Use WebGL as Background in HTML</a></li>
+<li><a href="/webgl/lessons/ja/webgl-cross-platform-issues.html">Cross Platform Issues</a></li>
+<li><a href="/webgl/lessons/ja/webgl-qna.html">Questions and Answers</a></li>
         </ul>
   <li>Reference</li>
         <ul>
           <li><a href="/webgl/lessons/ja/webgl-attributes.html">Attributes</a></li>
 <li><a href="/webgl/lessons/ja/webgl-texture-units.html">Texture Units</a></li>
+<li><a href="/webgl/lessons/ja/webgl-framebuffers.html">Framebuffers</a></li>
+<li><a href="/webgl/lessons/ja/webgl-readpixels.html">readPixels</a></li>
+<li><a href="/webgl/lessons/ja/webgl-references.html">References</a></li>
         </ul></ul>
 <ul>
   <li><a href="/docs/">Helper API Docs(英語)</a></li>
-  <li><a href="http://twgljs.org">TWGL, A tiny WebGL helper library</a></li>
+  <li><a href="https://twgljs.org">TWGL, A tiny WebGL helper library</a></li>
   <li><a href="https://github.com/gfxfundamentals/webgl-fundamentals">github</a></li>
 </ul>
         </div>
     </div>
     <div class="lesson-comments">
-        <div>質問? <a href="http://stackoverflow.com/questions/tagged/webgl">stackoverflowで質問(英語)</a>.</div>
-        <div>問題点/バグ? <a href="http://github.com/gfxfundamentals/webgl-fundamentals/issues">githubでissueを作成</a>.</div>
+        <div>問題点/バグ? <a href="https://github.com/gfxfundamentals/webgl-fundamentals/issues">githubでissueを作成</a>.</div>
 
         <div id="disqus_thread"></div>
-        <script type="text/javascript">
+        <script>
             /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
             var disqus_shortname = 'webglfundamentals'; // required: replace example with your forum shortname
             var disqus_identifier = 'WebGLのひな型コード';
@@ -554,11 +602,39 @@ webglUtils.resizeCanvasToMatchDisplaySize(canvas);
   </div>
 </div>
 </body>
+<script>
+const settings = {
+  contribTemplate: "Thank you <a href=\"${html_url}\"><img src=\"${avatar_url}\"> ${login}</a><br>for <a href=\"https://github.com/${owner}/${repo}/commits?author=${login}\">${contributions} contributions</a>",
+  owner: "gfxfundamentals",
+  repo: "webgl-fundamentals",
+};
+</script>
+<script src="/contributors.js"></script>
 <script src="/3rdparty/jquery-1.11.2.min.js"></script>
 <script src="/webgl/lessons/resources/prettify.js"></script>
-<script src="/webgl/lessons/resources/lesson.js"></script>
-<script src="//cdn.webglstats.com/stat.js" defer="defer" async="async"></script>
+<script src="/webgl/lessons/resources/lesson.js" type="module"></script>
 <script>
+(function() {
+  if (window.location.hostname.indexOf("webglfundamentals.org") < 0) {
+      return;
+  }
+
+  function addScript(src, type, fn) {
+    const script = document.createElement('script');
+    const firstScript = document.getElementsByTagName('script')[0];
+    script.async = true;
+    script.defer = true;
+    script.type = type || 'javascript';
+    if (fn) {
+      script.addEventListener('load', fn);
+    }
+    script.src = src;
+    firstScript.parentNode.insertBefore(script, firstScript);
+  }
+
+  // can't do this because it would eat contexts
+  //addScript('//gpustats.org/stats.js', 'module');
+
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -566,7 +642,7 @@ webglUtils.resizeCanvasToMatchDisplaySize(canvas);
 
   ga('create', 'UA-59804936-1', 'auto');
   ga('send', 'pageview');
-
+}());
 </script>
 
 

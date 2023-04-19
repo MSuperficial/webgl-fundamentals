@@ -1,6 +1,5 @@
 body {
   margin: 0;
-  width: 100vw;
 }
 .lesson-main>* {
     margin: 1em 0;
@@ -8,6 +7,7 @@ body {
 iframe.background {
     position: fixed;
     width: 100%;
+    max-width: 100% !important;
     height: 100vh;
     border: none;
     top: 0;

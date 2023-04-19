@@ -1,5 +1,5 @@
 /*
- * Copyright 2012, Gregg Tavares.
+ * Copyright 2021, GFXFundamentals.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -12,7 +12,7 @@
  * copyright notice, this list of conditions and the following disclaimer
  * in the documentation and/or other materials provided with the
  * distribution.
- *     * Neither the name of Gregg Tavares. nor the names of his
+ *     * Neither the name of GFXFundamentals. nor the names of his
  * contributors may be used to endorse or promote products derived from
  * this software without specific prior written permission.
  *
@@ -65,7 +65,9 @@
         // eslint-disable-line
       }
       try {
-        document.body.className = 'iframe';
+        if (document.body) {
+          document.body.className = 'iframe';
+        }
       } catch (e) {
         // eslint-disable-line
       }
@@ -77,19 +79,15 @@
   }
 
   /**
-   * Creates a webgl context. If creation fails it will
-   * change the contents of the container of the <canvas>
-   * tag to an error message with the correct links for WebGL.
+   * Changes canvas to message about needing webgl
    * @param {HTMLCanvasElement} canvas. The canvas element to
    *     create a context from.
-   * @param {WebGLContextCreationAttributes} opt_attribs Any
-   *     creation attributes you want to pass in.
-   * @return {WebGLRenderingContext} The created context.
    * @memberOf module:webgl-utils
    */
-  function showNeedWebGL(canvas) {
+  function showNeedWebGL(canvas, type) {
     const doc = canvas.ownerDocument;
     if (doc) {
+      const isWebGL2 = type === 'webgl2';
       const temp = doc.createElement('div');
       temp.innerHTML = `
         <div style="
@@ -106,8 +104,8 @@
           align-items: center;
         ">
           <div style="text-align: center;">
-            It doesn't appear your browser supports WebGL.<br/>
-            <a href="http://get.webgl.org" target="_blank">Click here for more information.</a>
+            It doesn't appear your browser supports ${isWebGL2 ? 'WebGL2' : 'WebGL'}.<br/>
+            <a href="https://get.webgl.org${isWebGL2 ? '/webgl2/' : ''}" target="_blank">Click here for more information.</a>
           </div>
         </div>
       `;
@@ -133,7 +131,7 @@
       background: rgba(221, 221, 221, 0.9);
     }
     .console .console-line {
-      white-space: pre;
+      white-space: pre-line;
     }
     .console .log .warn {
       color: black;
@@ -338,7 +336,7 @@
         super(url);
         let listener;
         this.onmessage = function(e) {
-          if (!e || !e.data || !e.data.type === '___editor___') {
+          if (!e || !e.data || e.data.type !== '___editor___') {
             if (listener) {
               listener(e);
             }
@@ -392,16 +390,17 @@
     const options = opt_options || {};
 
     if (canvas) {
-      canvas.addEventListener('webglcontextlost', function(e) {
+      canvas.addEventListener('webglcontextlost', function() {
           // the default is to do nothing. Preventing the default
           // means allowing context to be restored
-          e.preventDefault();
           addContextLostHTML();
       });
+      /* because of bug in firefox we can't auto restore
       canvas.addEventListener('webglcontextrestored', function() {
           // just reload the page. Easiest.
           window.location.reload();
       });
+      */
     }
 
     if (isInIFrame()) {
@@ -417,77 +416,6 @@
     }
   };
 
-  /**
-   * Gets the iframe in the parent document
-   * that is displaying the specified window .
-   * @param {Window} window window to check.
-   * @return {HTMLIFrameElement?) the iframe element if window is in an iframe
-   */
-  function getIFrameForWindow(window) {
-    if (!isInIFrame(window)) {
-      return;
-    }
-    const iframes = window.parent.document.getElementsByTagName('iframe');
-    for (let ii = 0; ii < iframes.length; ++ii) {
-      const iframe = iframes[ii];
-      if (iframe.contentDocument === window.document) {
-        return iframe;  // eslint-disable-line
-      }
-    }
-  }
-
-  /**
-   * Returns true if window is on screen. The main window is
-   * always on screen windows in iframes might not be.
-   * @param {Window} window the window to check.
-   * @return {boolean} true if window is on screen.
-   */
-  function isFrameVisible(window) {
-    try {
-      const iframe = getIFrameForWindow(window);
-      if (!iframe) {
-        return true;
-      }
-
-      const bounds = iframe.getBoundingClientRect();
-      const isVisible = bounds.top < window.parent.innerHeight && bounds.bottom >= 0 &&
-                        bounds.left < window.parent.innerWidth && bounds.right >= 0;
-
-      return isVisible && isFrameVisible(window.parent);
-    } catch (e) {
-      return true;  // We got a security error?
-    }
-  }
-
-  /**
-   * Returns true if element is on screen.
-   * @param {HTMLElement} element the element to check.
-   * @return {boolean} true if element is on screen.
-   */
-  function isOnScreen(element) {
-    let isVisible = true;
-
-    if (element) {
-      const bounds = element.getBoundingClientRect();
-      isVisible = bounds.top < topWindow.innerHeight && bounds.bottom >= 0;
-    }
-
-    return isVisible && isFrameVisible(topWindow);
-  }
-
-  // Replace requestAnimationFrame.
-  if (topWindow.requestAnimationFrame) {
-    topWindow.requestAnimationFrame = (function(oldRAF) {
-
-      return function(callback, element) {
-        const handler = function() {
-          return oldRAF(isOnScreen(element) ? callback : handler, element);
-        };
-        return handler();
-      };
-
-    }(topWindow.requestAnimationFrame));
-  }
 
   updateCSSIfInIFrame();
 
@@ -549,7 +477,7 @@
         }, args[1]);
         const ctx = oldFn.apply(this, args);
         if (!ctx && isWebGL) {
-          showNeedWebGL(this);
+          showNeedWebGL(this, type);
         }
         return ctx;
       };

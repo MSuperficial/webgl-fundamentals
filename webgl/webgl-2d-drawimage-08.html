@@ -45,8 +45,8 @@ void main() {
 <!--
 for most samples webgl-utils only provides shader compiling/linking and
 canvas resizing because why clutter the examples with code that's the same in every sample.
-See http://webglfundamentals.org/webgl/lessons/webgl-boilerplate.html
-and http://webglfundamentals.org/webgl/lessons/webgl-resizing-the-canvas.html
+See https://webglfundamentals.org/webgl/lessons/webgl-boilerplate.html
+and https://webglfundamentals.org/webgl/lessons/webgl-resizing-the-canvas.html
 for webgl-utils, m3, m4, and webgl-lessons-ui.
 -->
 <script src="resources/webgl-utils.js"></script>
@@ -57,7 +57,7 @@ for webgl-utils, m3, m4, and webgl-lessons-ui.
 function main() {
   // Get A WebGL context
   /** @type {HTMLCanvasElement} */
-  var canvas = document.getElementById("canvas");
+  var canvas = document.querySelector("#canvas");
   var gl = canvas.getContext("webgl");
   if (!gl) {
     return;
@@ -139,8 +139,8 @@ function main() {
       dy: Math.random() > 0.5 ? -1 : 1,
       xScale: Math.random() * 0.25 + 0.25,
       yScale: Math.random() * 0.25 + 0.25,
-      offX: Math.random() * 0.75,
-      offY: Math.random() * 0.75,
+      offX: 0,
+      offY: 0,
       rotation: Math.random() * Math.PI * 2,
       deltaRotation: (0.5 + Math.random() * 0.5) * (Math.random() > 0.5 ? -1 : 1),
       width:  1,
@@ -255,7 +255,7 @@ function main() {
     gl.enableVertexAttribArray(positionLocation);
     gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
 
-    // this matirx will convert from pixels to clip space
+    // this matrix will convert from pixels to clip space
     var matrix = m4.orthographic(0, gl.canvas.width, gl.canvas.height, 0, -1, 1);
 
     // this matrix will translate our quad to dstX, dstY

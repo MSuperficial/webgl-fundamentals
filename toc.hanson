@@ -3,6 +3,7 @@
     "webgl-fundamentals.md",
     "webgl-how-it-works.md",
     "webgl-shaders-and-glsl.md",
+    "webgl-state-diagram.md",
   ],
   "image-processing": [
     "webgl-image-processing.md",
@@ -31,6 +32,8 @@
   ],
   "geometry": [
     "webgl-3d-geometry-lathe.md",
+    "webgl-load-obj.md",
+    "webgl-load-obj-w-mtl.md",
   ],
   "textures": [
     "webgl-3d-textures.md",
@@ -50,6 +53,7 @@
     "2d": [
       "webgl-2d-drawimage.md",
       "webgl-2d-matrix-stack.md",
+      "webgl-sprites.md",
     ],
     "3d": [
       "webgl-cube-maps.md",
@@ -57,6 +61,7 @@
       "webgl-skybox.md",
       "webgl-skinning.md",
       "webgl-fog.md",
+      "webgl-picking.md",
     ],
     "text": [
       "webgl-text-html.md",
@@ -64,31 +69,45 @@
       "webgl-text-texture.md",
       "webgl-text-glyphs.md",
     ],
+    "textures": [
+      "webgl-ramp-textures.md",
+    ],
+    "gpgpu": [
+      "webgl-gpgpu.md",
+    ],
   },
   "tips": [
     "webgl-smallest-programs.md",
     "webgl-drawing-without-data.md",
+    "webgl-shadertoy.md",
     "webgl-pulling-vertices.md",
+  ],
+  "optimization": [
+    "webgl-indexed-vertices.md",
+    "webgl-instanced-drawing.md",
   ],
   "misc": [
     "webgl-setup-and-installation.md",
     "webgl-boilerplate.md",
-    "webgl-indexed-vertices.md",
     "webgl-resizing-the-canvas.md",
     "webgl-animation.md",
     "webgl-points-lines-triangles.md",
-    "webgl-indexed-vertices.md",
-    "webgl-instanced-drawing.md",
     "webgl-multiple-views.md",
     "webgl-visualizing-the-camera.md",
     "webgl-and-alpha.md",
     "webgl-2d-vs-3d-library.md",
     "webgl-anti-patterns.md",
     "webgl-matrix-vs-math.md",
+    "webgl-precision-issues.md",
     "webgl-tips.md",
+    "webgl-cross-platform-issues.md",
+    "webgl-qna.md",
   ],
   "reference": [
     "webgl-attributes.md",
     "webgl-texture-units.md",
+    "webgl-framebuffers.md",
+    "webgl-readpixels.md",
+    "webgl-references.md",
   ],
 }
